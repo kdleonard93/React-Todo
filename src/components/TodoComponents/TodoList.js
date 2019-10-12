@@ -1,18 +1,18 @@
 import React from "react";
+import Todo from "./Todo";
 
-class TodoList extends React.Component {
-  render() {
-    return (
-      <div className="todolistMain">
-        <div className="header">
-          <form onSubmit={this.addTodo}>
-            <input placeholder="...todo"></input>
-            <button type="submit">Add Todo</button>
-          </form>
-        </div>
-      </div>
-    );
-  }
-}
+const TodoList = props => {
+  return (
+    <div>
+      {props.todos.map(todo => (
+        <Todo
+          handleToggleComplete={props.handleToggleComplete}
+          key={todo.id}
+          todo={todo}
+        />
+      ))}
+    </div>
+  );
+};
 
 export default TodoList;
